@@ -9,14 +9,15 @@ namespace ClassLibrary
     public class UserClass
     {
         public int userID { get; set; }                         //customer ID number
+        public string firstName { get; set; }                   //user's first name
+        public string lastName { get; set; }                    //user's last name
         public int defaultLocation { get; set; }                //default location to order from
         public IList<OrderClass> OrderHistory = new List<OrderClass>();    //user's order history 
 
         //constructor
-        public UserClass(int userID, int defaultLocation)
+        public UserClass()
         {
-            this.userID = userID;
-            this.defaultLocation = defaultLocation;
+
         }
 
         //make an order and add it to the user's history

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess
 {
@@ -11,7 +12,9 @@ namespace DataAccess
             Users = new HashSet<Users>();
         }
 
+        [Key]
         public int LocationId { get; set; }
+        public string LocationName { get; set; }
         public int Stock { get; set; }
 
         public virtual ICollection<OrderDetails> OrderDetails { get; set; }

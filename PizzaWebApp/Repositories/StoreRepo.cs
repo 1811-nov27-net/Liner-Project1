@@ -1,12 +1,11 @@
-﻿using ClassLibrary;
-using System;
+﻿/*using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using PizzaWebApp.Models;
 
-
-namespace DataAccess
+namespace PizzaWebApp.Repositories
 {
     public class StoreRepo : IStoreRepo
     {
@@ -32,7 +31,7 @@ namespace DataAccess
             input = Console.ReadLine();
             if (int.TryParse(input, out int result))
             {
-                userID = Db.Users.First(u => u.UserId == result).UserId;
+                userID = Db.Users.First(u => u.UserID == result).UserID;
             }
             else
             {
@@ -40,7 +39,7 @@ namespace DataAccess
             }
 
 
-            locationID = Db.Users.First(u => u.UserId == userID).DefaultLocation;   //set the store location as the user's default
+            locationID = Db.Users.First(u => u.UserID == userID).DefaultLocation;   //set the store location as the user's default
 
 
             do
@@ -71,9 +70,9 @@ namespace DataAccess
                 var order = new OrderClass(userID, locationID, smallPizzas, largePizzas);
                 user.AddToHistory(order);
                 OrderDetails trackedOrder = new OrderDetails();         //create a new order to be tracked in database
-                trackedOrder.UserId = Db.Users.First(u => u.UserId == order.user).UserId;   //match customer ID with customer in database
+                trackedOrder.UserID = Db.Users.First(u => u.UserID == order.user).UserID;   //match customer ID with customer in database
                 trackedOrder.Pizzas = order.smallPizzas + order.largePizzas;                                         //set number of pizzas in the order
-                trackedOrder.LocationId = Db.Store.First(s => s.LocationId == order.location).LocationId;   //match location ID with ID in database
+                trackedOrder.LocationID = Db.Store.First(s => s.LocationID == order.location).LocationID;   //match location ID with ID in database
                 trackedOrder.Price = order.price;                                           //set the price of the order
                 trackedOrder.DatePlaced = order.orderTime;                                  //time of order being placed
 
@@ -90,7 +89,7 @@ namespace DataAccess
         //converts user data from database tables into a C# object
         public UserClass UserConversion(Users user)
         {
-            return new UserClass(user.UserId, user.DefaultLocation);
+            return new UserClass(user.UserID, user.DefaultLocation);
         }
 
         //make a list of object UserClass using library class as a blueprint
@@ -107,7 +106,7 @@ namespace DataAccess
         //converts store location data from database tables into a C# object
         public StoreClass StoreConversion(Store store)
         {
-            return new StoreClass(store.LocationId);
+            return new StoreClass(store.LocationID);
         }
 
         //makes a list of object StoreClass using library class as a blueprint
@@ -124,8 +123,8 @@ namespace DataAccess
         //give details of the order
         public string OrderOverview(OrderClass order)
         {
-            string firstName = Db.Users.First(u => u.UserId == order.user).FirstName;
-            string lastName = Db.Users.First(u => u.UserId == order.user).LastName;
+            string firstName = Db.Users.First(u => u.UserID == order.user).FirstName;
+            string lastName = Db.Users.First(u => u.UserID == order.user).LastName;
 
 
             return "User Name: " + firstName + " " + lastName + ".\n" + "Pizzas: " + (order.smallPizzas + order.largePizzas) + ".\n" +
@@ -138,6 +137,8 @@ namespace DataAccess
         }*/
 
         //save changes to the database
+
+        /*
         public void SaveChanges()
         {
             Db.SaveChanges();
@@ -145,4 +146,4 @@ namespace DataAccess
 
 
     }
-}
+}*/

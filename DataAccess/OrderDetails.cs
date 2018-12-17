@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace DataAccess
 {
     public partial class OrderDetails
     {
+        [Key]
         public int OrderId { get; set; }
-        public int Pizzas { get; set; }
-        public int LocationId { get; set; }
-        public int UserId { get; set; }
+        public int smallPizzas { get; set; }
+        public int largePizzas { get; set; }
+        public int LocationID { get; set; }
+        public int UserID { get; set; }
         public decimal Price { get; set; }
         public DateTime DatePlaced { get; set; }
 

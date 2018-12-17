@@ -6,24 +6,19 @@ namespace ClassLibrary
 {
     public class StoreClass
     {
-        public int locationID { get; set; }                    //store location ID
-        public int stock = 20;                                 //inventory stock
+        public int locationID { get; set; }                     //store location ID
+        public string locationName { get; set; }                //pizza store name
+        public int stock;                                       //inventory stock
 
         //constructor
-        public StoreClass(int locationID)
+        /*public StoreClass(int locationID)
         {
             this.locationID = locationID;
-        }
+        }*/
 
         //history of orders placed to the location
         List<OrderClass> history = new List<OrderClass>();
 
-        //return a suggested order based on user's history
-        public OrderClass SuggestedOrder(UserClass user)
-        {
-            int i = (user.OrderHistory.Count) - 1;
-            return user.OrderHistory[i];                //return the latest order the user has made
-        }
 
         //add order to history
 
