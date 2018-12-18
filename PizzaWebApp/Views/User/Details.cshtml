@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PizzaWebApp.Models.UserClass>
+﻿@model IEnumerable<ClassLibrary.UserClass>
 
 @{
     ViewData["Title"] = "Details";
@@ -42,10 +42,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.defaultLocation)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            <td>               
+                @Html.ActionLink("Order History", "UserOrderDetails", new { id = item.userID })                
             </td>
         </tr>
 }

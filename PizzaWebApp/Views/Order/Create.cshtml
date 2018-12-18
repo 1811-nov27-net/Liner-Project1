@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-
-<h4>OrderClass</h4>
+<div class="text-center">
+    <h1>Place your order here.</h1>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -16,6 +16,14 @@
                 <label asp-for="user" class="control-label"></label>
                 <input asp-for="user" class="form-control" />
                 <span asp-validation-for="user" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <select asp-for="locationName">
+                    <option value="Pizza Store A">Pizza Store A</option>
+                    <option value="Pizza Store B">Pizza Store B</option>
+                    <option value="Pizza Store C">Pizza Store C</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="smallPizzas" class="control-label"></label>

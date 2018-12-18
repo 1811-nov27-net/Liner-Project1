@@ -5,93 +5,73 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ClassLibrary;
+using DataAccess;
 using PizzaWebApp.Repositories;
-using ClassLibrary;
 
 namespace PizzaWebApp.Controllers
 {
-    public class OrderController : Controller
+    public class StoreController : Controller
     {
-
         public IStoreRepo Repo { get; set; }
 
-        public OrderController(IStoreRepo repo)
+        public StoreController(IStoreRepo repo)
         {
             Repo = repo;
         }
 
-
-        // GET: Order
+        // GET: Store
         public ActionResult Index()
+        {
+            return View(Repo.GetStores());
+        }
+
+        public ActionResult StoresRestocked(int id)
+        {
+            Repo.RestockStore(id);
+            return View();
+        }
+
+        public ActionResult StoreOrders(int id)
+        {           
+            return View(Repo.StoreOrders(id));
+        }
+
+        // GET: Store/Details/5
+        public ActionResult Details(int id)
         {
             return View();
         }
 
-        // GET: Order/Details/5
-        public ActionResult Details(int id)
-        {
-            return View(Repo.UserOrders(id));
-        }
-
-        // GET: Order/Create
+        // GET: Store/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        public ActionResult OrderFailed()
-        {
-            return View();
-        }
-
-        public ActionResult OrderCompleted()
-        {
-            return View();
-        }
-
-        // POST: Order/Create
+        // POST: Store/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrderClass order)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
-                if (ModelState.IsValid)
-                {
-                    bool success = Repo.MakeOrder(order);
-                    
-                    if (success)
-                    {
-                        return RedirectToAction(nameof(OrderCompleted));
-                    }
+                // TODO: Add insert logic here
 
-                    else { return RedirectToAction(nameof(OrderFailed)); }
-                }
-
-                else
-                {
-                    return View();
-                    return RedirectToAction(nameof(OrderFailed));
-                }
-
-                return View();
-                return RedirectToAction(nameof(OrderFailed));
-
+                return RedirectToAction(nameof(Index));
             }
-            catch(ArgumentException ex)
+            catch
             {
                 return View();
-                return RedirectToAction(nameof(OrderFailed));
             }
         }
 
-        // GET: Order/Edit/5
+        // GET: Store/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: Order/Edit/5
+        // POST: Store/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -108,13 +88,13 @@ namespace PizzaWebApp.Controllers
             }
         }
 
-        // GET: Order/Delete/5
+        // GET: Store/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: Order/Delete/5
+        // POST: Store/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

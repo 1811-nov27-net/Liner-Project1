@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PizzaWebApp.Repositories;
+using ClassLibrary;
+using DataAccess;
 
 namespace PizzaWebApp.Controllers
 {
@@ -12,6 +14,7 @@ namespace PizzaWebApp.Controllers
     {
 
         public IStoreRepo Repo { get; set; }
+
 
         public UserController(IStoreRepo repo)
         {
@@ -25,9 +28,10 @@ namespace PizzaWebApp.Controllers
         }
 
         // GET: User/Details/5
-        public ActionResult Details(int id)
+        public ActionResult UserOrderHistory(int id)
         {
-            return View();
+            //orderHistory = ;
+            return View(Repo.UserOrders(id));
         }
 
         // GET: User/Create

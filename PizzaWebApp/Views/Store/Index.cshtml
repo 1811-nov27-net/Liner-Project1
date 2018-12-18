@@ -1,0 +1,48 @@
+﻿@model IEnumerable<DataAccess.Store>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="text-center">
+    <h1>List of Store Locations</h1>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Location ID
+            </th>
+            <th>
+                Store Name
+            </th>
+            <th>
+                Inventory
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Stock)
+            </td>
+            <td>
+                @Html.ActionLink("Restock", "StoresRestocked", new { id = item.LocationId }) |
+                @Html.ActionLink("Order History", "StoreOrders", new { id = item.LocationId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

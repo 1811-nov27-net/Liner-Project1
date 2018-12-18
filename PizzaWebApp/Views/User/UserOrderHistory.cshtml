@@ -1,0 +1,70 @@
+﻿@model IEnumerable<DataAccess.OrderDetails>
+
+@{
+    ViewData["Title"] = "UserOrderHistory";
+}
+<div class="text-center">
+    <h1>User Order History</h1>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Order ID
+            </th>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Store
+            </th>
+            <th>
+                Small Pizzas
+            </th>
+            <th>
+                Large Pizzas
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Time/Date
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.locationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.smallPizzas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.largePizzas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DatePlaced)
+            </td>
+
+        </tr>
+}
+    </tbody>
+</table>

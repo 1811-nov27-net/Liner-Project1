@@ -8,6 +8,7 @@ namespace ClassLibrary
     {
 
         public int Location { get; set; } = 0;               //location ID of pizza shop
+        public string locationName { get; set; }             //Name of Pizza store
         public int user { get; set; }                    //user ID of person ordering
         public string firstName { get; set; } = " ";           //first name of user
         public string lastName { get; set; } = " ";            //last name of user

@@ -1,14 +1,14 @@
-﻿@model IEnumerable<PizzaWebApp.Models.UserClass>
+﻿@model IEnumerable<ClassLibrary.UserClass>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="text-center">
+    <h1>List of Users</h1>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -43,9 +43,7 @@
                 @Html.DisplayFor(modelItem => item.defaultLocation)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Order History", "UserOrderHistory", new { id = item.userID })
             </td>
         </tr>
 }
