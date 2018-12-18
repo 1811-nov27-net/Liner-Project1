@@ -3,11 +3,20 @@
 @{
     ViewData["Title"] = "UserOrderHistory";
 }
+
+<head>
+    <style>
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
 <div class="text-center">
     <h1>User Order History</h1>
 </div>
 
-<table class="table">
+<table class="table" border="1">
     <thead>
         <tr>
             <th>

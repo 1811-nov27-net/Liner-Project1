@@ -7,13 +7,22 @@
 <div class="text-center">
     <h1>Place your order here.</h1>
 </div>
+
+<div>
+    <p>
+        <ul>
+            <li>Small Pizza: $25</li>
+            <li>Large Pizza: $50</li>
+        </ul>
+    </p>
+</div>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="user" class="control-label"></label>
+                <label asp-for="user" class="control-label">User ID</label>
                 <input asp-for="user" class="form-control" />
                 <span asp-validation-for="user" class="text-danger"></span>
             </div>
@@ -26,12 +35,12 @@
                 </select>
             </div>
             <div class="form-group">
-                <label asp-for="smallPizzas" class="control-label"></label>
+                <label asp-for="smallPizzas" class="control-label">Small Pizzas</label>
                 <input asp-for="smallPizzas" class="form-control" />
                 <span asp-validation-for="smallPizzas" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="largePizzas" class="control-label"></label>
+                <label asp-for="largePizzas" class="control-label">Large Pizzas</label>
                 <input asp-for="largePizzas" class="form-control" />
                 <span asp-validation-for="largePizzas" class="text-danger"></span>
             </div>
